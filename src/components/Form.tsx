@@ -51,6 +51,7 @@ export default function Form() {
                 waitingTime: ratings[9],
                 remark: remark
             })
+            alert("Form submitted successfully")
         } catch (error) {
             alert("Form not submitted")
         } finally {
