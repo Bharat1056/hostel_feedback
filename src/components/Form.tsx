@@ -10,12 +10,15 @@ import { hostelNames } from '@/constants/hostelQuestion'
 import axios from 'axios'
 import { emailRegex } from '@/constants/hostelQuestion'
 import { baseURL } from '@/constants'
+import { Input } from './ui/input'
+import { Textarea } from './ui/textarea'
 
 export default function Form() {
     const [ratings, setRatings] = useState(questions.map(() => 1))
     const [selectedHostel, setSelectedHostel] = useState("")
     const [email, setEmail] = useState("")
     const [loading, setLoading] = useState(false)
+    const [remark, setRemark] = useState("")
 
     const handleRatingChange = (index: number, value: number) => {
         const newRatings = [...ratings]
@@ -46,7 +49,8 @@ export default function Form() {
                 tableCleanliness: ratings[6],
                 staffBehavior: ratings[7],
                 plateCleanliness: ratings[8],
-                waitingTime: ratings[9]
+                waitingTime: ratings[9],
+                remark: remark
             })
         } catch (error) {
             alert("Form not submitted")
@@ -110,7 +114,18 @@ export default function Form() {
                         </div>
                     </div>
                 ))}
+                <div className="space-y-2">
+                    <div className="flex items-start  flex-col space-x-4">
+                        <Label className="text-base font-medium">
+                            11. Remarks
+                        </Label>
+                        <div className="slider-wrapper">
+                            <Textarea placeholder="Any remarks regarding clealiness of mess" id="message" value={remark} onChange={(e) => setRemark(e.target.value)} />
+                        </div>
+                    </div>
+                </div>
             </CardContent>
+
 
             {/* Submit button */}
             <CardFooter className="pt-6">

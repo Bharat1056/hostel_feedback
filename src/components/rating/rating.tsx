@@ -19,23 +19,23 @@ export default function Rating({ onChange }: RatingFieldProps = {}) {
 
   return (
     <div className="flex flex-col items-center space-y-4">
-      <div className="flex space-x-1">
+      <div className="flex space-x-1  ">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((star) => (
           <button
             key={star}
-            className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-800 rounded-full p-1 transition-transform duration-200 ease-in-out hover:scale-110"
+            className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-800 rounded-full p-1 w-fit transition-transform duration-200 ease-in-out hover:scale-110"
             onClick={() => handleRating(star)}
             onMouseEnter={() => setHover(star)}
             onMouseLeave={() => setHover(0)}
             aria-label={`Rate ${star} stars out of 5`}
           >
             <svg
-              className="w-8 h-8 transition-all duration-300 ease-in-out"
+              className="w-5 h-5 md:w-8 md:h-8 transition-all duration-300 ease-in-out"
               viewBox="0 0 24 24"
               fill={star <= (hover || rating) ? '#8B5CF6' : 'none'}
               stroke={star <= (hover || rating) ? '#8B5CF6' : '#D1D5DB'}
               strokeWidth="2"
-            >
+            >cr
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
             </svg>
           </button>
