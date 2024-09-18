@@ -11,6 +11,7 @@ import axios from 'axios'
 import { emailRegex } from '@/constants/hostelQuestion'
 import { baseURL } from '@/constants'
 import { Textarea } from './ui/textarea'
+import { AgreementModal } from './ui/modal'
 
 export default function Form() {
     const [ratings, setRatings] = useState(questions.map(() => 1))
@@ -18,6 +19,7 @@ export default function Form() {
     const [email, setEmail] = useState("")
     const [loading, setLoading] = useState(false)
     const [remark, setRemark] = useState("")
+    const [showAgreement,setShowAgreement]=useState(false)
 
     const handleRatingChange = (index: number, value: number) => {
         const newRatings = [...ratings]
@@ -57,6 +59,10 @@ export default function Form() {
         } finally {
             setLoading(false)
         }
+    }
+
+    const ToggleAgreement=()=>{
+        setShowAgreement(!showAgreement)
     }
 
     return (
@@ -128,11 +134,15 @@ export default function Form() {
 
 
             {/* Submit button */}
-            <CardFooter className="pt-6">
+            <CardFooter className="pt-6 flex flex-col space-y-4">
                 <Button className="w-full py-3" onClick={handleSubmit}>
                     {!loading ? "Submit Feedback" : "Submitting..."}
                 </Button>
+                <Button className="w-full py-3" onClick={ToggleAgreement}>
+                    Show Agreement
+                </Button>
             </CardFooter>
+            <AgreementModal isOpen={showAgreement} ToggleAgreement={ToggleAgreement}/>
         </Card>
 
     )
