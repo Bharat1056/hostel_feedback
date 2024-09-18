@@ -19,12 +19,13 @@ export const hostelQuestions = [
     "Marichi",
     "Kratu",
     "Atri",
-    "Basistha",
+    "Vasistha",
+    "Angira",
     "Anuradha",
-    "Arundhanti",
-    "Vishakha",
+    "Arundhati",
+    "Visakha",
     "Rohini",
-    "Basundhara"
+    "Vasundhara"
   ]
 
   export const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
