@@ -26,7 +26,7 @@ interface HostelReview {
 function RatingBar({ rating }: { rating: number }) {
     return (
         <div className="flex items-center">
-            {[1, 2, 3, 4, 5].map((star) => (
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((star) => (
                 <StarIcon
                     key={star}
                     className={`h-4 w-4 ${star <= rating ? "text-yellow-400" : "text-gray-300"}`}
