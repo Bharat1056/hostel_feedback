@@ -10,7 +10,6 @@ import { hostelNames } from '@/constants/hostelQuestion'
 import axios from 'axios'
 import { emailRegex } from '@/constants/hostelQuestion'
 import { baseURL } from '@/constants'
-import { Input } from './ui/input'
 import { Textarea } from './ui/textarea'
 
 export default function Form() {
