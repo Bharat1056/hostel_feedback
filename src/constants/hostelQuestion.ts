@@ -8,7 +8,7 @@ export const hostelQuestions = [
     "Is dining table cleaned after each sitting?",
     "Do you find mess staff behavior cordial towards boarders?",
     "Is serving plates cleaned properly?",
-    "Is Waiting time for served food is more than 15 minutes?"
+    "Waiting time for served food?"
   ]
 
 
