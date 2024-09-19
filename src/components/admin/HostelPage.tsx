@@ -1,7 +1,7 @@
 "use client";
 import { StarIcon } from "lucide-react";
 import axios from "axios";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { baseURL } from "@/constants";
 import { Calendar } from "@/components/ui/calendar"
 
