@@ -14,7 +14,7 @@ import { Textarea } from './ui/textarea'
 import { AgreementModal } from './ui/modal'
 
 export default function Form() {
-    const [ratings, setRatings] = useState(questions.map(() => 1))
+    const [ratings, setRatings] = useState(questions.map(() => 0))
     const [selectedHostel, setSelectedHostel] = useState("")
     const [email, setEmail] = useState("")
     const [loading, setLoading] = useState(false)
