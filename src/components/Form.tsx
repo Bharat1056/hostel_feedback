@@ -142,7 +142,7 @@ export default function Form() {
                     Show Agreement
                 </Button>
             </CardFooter>
-            <AgreementModal isOpen={showAgreement} ToggleAgreement={ToggleAgreement}/>
+            <AgreementModal isOpen={showAgreement} ToggleAgreement={ToggleAgreement} />
         </Card>
 
     )
