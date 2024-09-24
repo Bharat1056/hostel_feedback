@@ -124,7 +124,7 @@ export default function Form() {
                 <div className="space-y-2">
                     <div className="flex items-start  flex-col space-x-4">
                         <Label className="text-base font-medium">
-                            11. Remarks
+                            11. Remarks (in 10 words)
                         </Label>
                         <div className="slider-wrapper">
                             <Textarea placeholder="Any remarks regarding clealiness of mess" id="message" value={remark} onChange={(e) => setRemark(e.target.value)} />
