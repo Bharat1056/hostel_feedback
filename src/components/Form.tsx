@@ -38,7 +38,7 @@ export default function Form() {
         }
         setLoading(true)
         try {
-            await axios.post(`${baseURL}/api/feedback/add`, {
+            const res = await axios.post(`${baseURL}/api/feedback/add`, {
                 name: selectedHostel,
                 email: email,
                 hygiene: ratings[0],
@@ -53,6 +53,7 @@ export default function Form() {
                 waitingTime: ratings[9],
                 remark: remark
             })
+            console.log(res.headers)
             alert("Form submitted successfully")
         } catch (error) {
             alert("Form not submitted")
@@ -139,7 +140,7 @@ export default function Form() {
                     {!loading ? "Submit Feedback" : "Submitting..."}
                 </Button>
                 <Button className="w-full py-3" onClick={ToggleAgreement}>
-                    Show Agreement
+                    Show Contract
                 </Button>
             </CardFooter>
             <AgreementModal isOpen={showAgreement} ToggleAgreement={ToggleAgreement} />
