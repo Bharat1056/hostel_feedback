@@ -72,10 +72,12 @@ export default function HostelLanding() {
         const istOffset = 5.5 * 60 * 60 * 1000;
         
         let indianDate:any;
-        if(date.day >= 1 && date.day < 10){
-          indianDate = `${date.year}-${date.month}-0${date.day}`
+        if((date.day >= 1 && date.day < 10) && (date.month >= 1 && date.month < 10)){
+          indianDate = `${date.year}-0${date.month}-0${date.day}`
         }else if(date.month >= 1 && date.month < 10){
           indianDate = `${date.year}-0${date.month}-${date.day}`
+        }else if(date.day >= 1 && date.day < 10){
+          indianDate = `${date.year}-${date.month}-0${date.day}`
         }else{
           indianDate = `${date.year}-${date.month}-${date.day}`
         }
