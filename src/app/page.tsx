@@ -2,18 +2,11 @@ import Form from "@/components/Form";
 import React from "react";
 import { NextUIProvider } from "@nextui-org/react";
 
-export default function Home(
-  {
-    children,
-  }: Readonly<{
-    children: React.ReactNode;
-  }>
-) {
+export default function Home() {
   return (
     <>
       <NextUIProvider>
         <Form />
-        {children}
       </NextUIProvider>
     </>
   );
