@@ -19,7 +19,7 @@ export default function Form() {
     const [email, setEmail] = useState("")
     const [loading, setLoading] = useState(false)
     const [remark, setRemark] = useState("")
-    const [showAgreement,setShowAgreement]=useState(false)
+    const [showAgreement, setShowAgreement] = useState(false)
 
     const handleRatingChange = (index: number, value: number) => {
         const newRatings = [...ratings]
@@ -38,9 +38,7 @@ export default function Form() {
         }
         setLoading(true)
         try {
-
             const res = await axios.post(`${baseURL}/api/feedback/add`, {
-
                 name: selectedHostel,
                 email: email,
                 hygiene: ratings[0],
@@ -54,20 +52,16 @@ export default function Form() {
                 plateCleanliness: ratings[8],
                 waitingTime: ratings[9],
                 remark: remark
-            })
-            console.log(res.headers)
-            alert("Form submitted successfully")
-            console.log(response.data.message);
+            }, { withCredentials: true })
+            alert(res.data.message)
         } catch (error) {
             alert("Form not submitted")
-           
-            
         } finally {
             setLoading(false)
         }
     }
 
-    const ToggleAgreement=()=>{
+    const ToggleAgreement = () => {
         setShowAgreement(!showAgreement)
     }
 

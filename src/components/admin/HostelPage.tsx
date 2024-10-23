@@ -6,7 +6,6 @@ import { baseURL } from "@/constants";
 
 // import { Calendar } from "@/components/ui/calendar"
 import { Calendar } from "@nextui-org/calendar";
-import { useMemo } from "react";
 import { debounce } from "lodash";
 import { today, getLocalTimeZone } from "@internationalized/date";
 import { parseDate } from "@internationalized/date";
@@ -55,7 +54,7 @@ export default function HostelLanding() {
   const [hostelData, setHostelData] = useState<HostelReview[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
- 
+
   const [cachedData, setCachedData] = useState<Record<string, HostelReview[]>>(
     {}
   );
@@ -69,23 +68,23 @@ export default function HostelLanding() {
     () =>
       debounce(async (date: DateValue) => {
         console.log(date);
-        
+
         setLoading(true);
         const istOffset = 5.5 * 60 * 60 * 1000;
-        
-        let indianDate:any;
-        if((date.day >= 1 && date.day < 10) && (date.month >= 1 && date.month < 10)){
+
+        let indianDate: any;
+        if ((date.day >= 1 && date.day < 10) && (date.month >= 1 && date.month < 10)) {
           indianDate = `${date.year}-0${date.month}-0${date.day}`
-        }else if(date.month >= 1 && date.month < 10){
+        } else if (date.month >= 1 && date.month < 10) {
           indianDate = `${date.year}-0${date.month}-${date.day}`
-        }else if(date.day >= 1 && date.day < 10){
+        } else if (date.day >= 1 && date.day < 10) {
           indianDate = `${date.year}-${date.month}-0${date.day}`
-        }else{
+        } else {
           indianDate = `${date.year}-${date.month}-${date.day}`
         }
 
         console.log(indianDate);
-        
+
 
 
         if (cachedData[indianDate]) {
@@ -97,8 +96,8 @@ export default function HostelLanding() {
               `${baseURL}/api/feedback/getByDate?date=${indianDate}`
             );
             const data = response.data.data || [];
-            console.log(response+"jd" || "dwj");
-            
+            console.log(response + "jd" || "dwj");
+
             setHostelData(data);
             setCachedData((prev) => ({ ...prev, [indianDate]: data }));
           } catch (error) {
@@ -110,9 +109,9 @@ export default function HostelLanding() {
       }, 300),
     [cachedData]
   );
-  
-  
-  
+
+
+
   useEffect(() => {
 
     fetchData(focusedDate);
@@ -126,10 +125,10 @@ export default function HostelLanding() {
         defaultValue={defaultDate}
         focusedValue={focusedDate}
         onFocusChange={setFocusedDate}
-        onFocus={() => {fetchData(focusedDate)}}
+        onFocus={() => { fetchData(focusedDate) }}
         maxValue={today(getLocalTimeZone())}
         showMonthAndYearPickers
-        pageBehavior="single" 
+        pageBehavior="single"
       />
     ),
     [defaultDate]
@@ -144,7 +143,7 @@ export default function HostelLanding() {
         </h1>
         {calendar}
 
-        <br/>
+        <br />
 
         {loading ? (
           <div className="text-center text-lg font-semibold text-gray-800 mt-8">
