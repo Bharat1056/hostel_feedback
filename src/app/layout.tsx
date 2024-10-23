@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Toaster } from "@/components/ui/toaster"
 import "./globals.css";
+import Home from "./page";
 
 
 
@@ -15,11 +16,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-      >
-        {children}
-        <Toaster />
+    <html lang="en" className="light">
+      <body>
+       
+       {children}
+       
+       <Toaster />
       </body>
     </html>
   );

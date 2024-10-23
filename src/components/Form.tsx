@@ -38,7 +38,9 @@ export default function Form() {
         }
         setLoading(true)
         try {
+
             const res = await axios.post(`${baseURL}/api/feedback/add`, {
+
                 name: selectedHostel,
                 email: email,
                 hygiene: ratings[0],
@@ -55,8 +57,11 @@ export default function Form() {
             })
             console.log(res.headers)
             alert("Form submitted successfully")
+            console.log(response.data.message);
         } catch (error) {
             alert("Form not submitted")
+           
+            
         } finally {
             setLoading(false)
         }
