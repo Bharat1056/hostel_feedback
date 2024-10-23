@@ -1,19 +1,20 @@
 import Form from "@/components/Form";
 // import Image from "next/image";
-import {NextUIProvider} from "@nextui-org/react";
+import { NextUIProvider } from "@nextui-org/react";
 
 export default function Home(
   {
-    children, 
+    children,
   }: Readonly<{
     children: React.ReactNode;
   }>
 ) {
   return (
     <>
-     <NextUIProvider>
-     <Form  />
-     </NextUIProvider>
+      <NextUIProvider>
+        <Form />
+        {children}
+      </NextUIProvider>
     </>
   );
 }

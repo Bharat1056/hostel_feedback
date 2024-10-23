@@ -8,9 +8,7 @@ import { baseURL } from "@/constants";
 import { Calendar } from "@nextui-org/calendar";
 import { debounce } from "lodash";
 import { today, getLocalTimeZone } from "@internationalized/date";
-import { parseDate } from "@internationalized/date";
 import type { DateValue } from "@react-types/calendar";
-import { CalendarDate } from "@nextui-org/react";
 
 
 interface HostelReview {
@@ -53,26 +51,17 @@ function RatingBar({ rating }: { rating: number }) {
 export default function HostelLanding() {
   const [hostelData, setHostelData] = useState<HostelReview[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-
-
   const [cachedData, setCachedData] = useState<Record<string, HostelReview[]>>(
     {}
   );
   const defaultDate = today(getLocalTimeZone());
-  let [focusedDate, setFocusedDate] = useState<DateValue>(defaultDate);
-
-  console.log(focusedDate);
-  console.log(defaultDate);
+  const [focusedDate, setFocusedDate] = useState<DateValue>(defaultDate);
 
   const fetchData = useMemo(
     () =>
       debounce(async (date: DateValue) => {
-        console.log(date);
-
         setLoading(true);
-        const istOffset = 5.5 * 60 * 60 * 1000;
-
-        let indianDate: any;
+        let indianDate: string;
         if ((date.day >= 1 && date.day < 10) && (date.month >= 1 && date.month < 10)) {
           indianDate = `${date.year}-0${date.month}-0${date.day}`
         } else if (date.month >= 1 && date.month < 10) {
@@ -82,11 +71,6 @@ export default function HostelLanding() {
         } else {
           indianDate = `${date.year}-${date.month}-${date.day}`
         }
-
-        console.log(indianDate);
-
-
-
         if (cachedData[indianDate]) {
           setHostelData(cachedData[indianDate]);
           setLoading(false);
@@ -115,7 +99,7 @@ export default function HostelLanding() {
   useEffect(() => {
 
     fetchData(focusedDate);
-  }, []);
+  }, [fetchData, focusedDate]);
 
   const calendar = useMemo(
     () => (
@@ -131,7 +115,7 @@ export default function HostelLanding() {
         pageBehavior="single"
       />
     ),
-    [defaultDate]
+    [defaultDate, focusedDate, fetchData]
   );
 
 
